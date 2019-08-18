@@ -80,22 +80,26 @@ const mimeCSS = "text/css"
 
 func Handler() http.Handler {
 	mux := http.NewServeMux()
-    mux.HandleFunc("{{.BasePath}}/markdown.css", cssHandler)
+	mux.HandleFunc("{{.BasePath}}/markdown.css", cssHandler)
 {{- range .Pages}}
-    mux.HandleFunc("{{.WebPath}}", {{.Name}}Handler)
+	mux.HandleFunc("{{.WebPath}}", {{.Name}}Handler)
 {{- end}}
 	return mux
 }
 
 func cssHandler(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set(contentType, mimeCSS)
+	// nolint: errcheck
 	w.Write([]byte(` + "`{{.CSS}}`" + `))
 }
 
 {{- range .Pages}}
 
+// nolint: golint
 func {{.Name}}Handler(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set(contentType, mimeHTML)
+
+	// nolint: errcheck
 	w.Write([]byte(` + "`{{.HTML}}`" + `))
 }
 {{- end}}
