@@ -52,9 +52,12 @@ func main() {
 		uniqueLinks:     make(map[string]bool),
 	}
 
-	renderer.listFiles(*dir, *basePath)
+	renderer.findMDFiles(*dir, *basePath)
 	renderer.parseMarkdown()
 	renderer.buildAndExportHTMLPages()
+
+	renderer.findSVGFiles(*dir, *basePath)
+
 	renderer.buildAndExportGoPkg()
 	zap.L().Info("done")
 }
@@ -79,11 +82,12 @@ type serviceDocRenderer struct {
 	serviceTitle    string
 	uniqueLinks     map[string]bool
 	pages           core.Pages
+	staticFiles     core.Files
 	css             string
 }
 
-func (sdr *serviceDocRenderer) listFiles(dir, basePath string) {
-	zap.L().Info("search dir")
+func (sdr *serviceDocRenderer) findMDFiles(dir, basePath string) {
+	zap.L().Info("search for MD files")
 	files, err := ioutil.ReadDir(dir + "/")
 	if err != nil {
 		log.Fatal(err)
@@ -106,6 +110,37 @@ func (sdr *serviceDocRenderer) listFiles(dir, basePath string) {
 
 		page.Filepath = dir + "/" + f.Name()
 		sdr.pages = append(sdr.pages, page)
+	}
+}
+
+func (sdr *serviceDocRenderer) findSVGFiles(dir, basePath string) {
+	zap.L().Info("search for SVG files")
+	files, err := ioutil.ReadDir(dir + "/static")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for _, f := range files {
+		if f.IsDir() || !strings.HasSuffix(f.Name(), ".svg") {
+			continue
+		}
+
+		file := core.File{ContentType: "image/svg+xml"}
+		file.Path = basePath + "/static/" + f.Name()
+
+		file.Name = strings.ReplaceAll(f.Name(), ".svg", "")
+		file.Name = convertKebabCaseToCamel(file.Name)
+
+		filepath := dir + "/static/" + f.Name()
+		content, err := ioutil.ReadFile(filepath)
+		if err != nil {
+			zap.L().
+				With(zap.Error(err), zap.String("file", filepath)).
+				Error("Failed to read file")
+		}
+
+		file.Content = string(content)
+		sdr.staticFiles = append(sdr.staticFiles, file)
 	}
 }
 
@@ -217,6 +252,7 @@ func (sdr *serviceDocRenderer) buildAndExportGoPkg() {
 
 	bs, err := go_gen.New().
 		WithPages(sdr.pages).
+		WithStaticFiles(sdr.staticFiles).
 		WithCSS(sdr.css).
 		WithBasePath(sdr.basePath).
 		Build()

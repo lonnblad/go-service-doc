@@ -12,9 +12,10 @@ import (
 )
 
 type Gen struct {
-	pages    core.Pages
-	css      string
-	basePath string
+	pages       core.Pages
+	staticFiles core.Files
+	css         string
+	basePath    string
 }
 
 func New() *Gen {
@@ -26,6 +27,11 @@ func (g *Gen) WithPages(pages core.Pages) *Gen {
 		page.HTML = strings.ReplaceAll(page.HTML, "`", "` + \"`\" + `")
 		g.pages = append(g.pages, page)
 	}
+	return g
+}
+
+func (g *Gen) WithStaticFiles(files core.Files) *Gen {
+	g.staticFiles = files
 	return g
 }
 
@@ -41,15 +47,17 @@ func (g *Gen) WithBasePath(basePath string) *Gen {
 
 func (g *Gen) Build() (_ []byte, err error) {
 	templateInfo := struct {
-		Timestamp time.Time
-		Pages     core.Pages
-		CSS       string
-		BasePath  string
+		Timestamp   time.Time
+		Pages       core.Pages
+		StaticFiles core.Files
+		CSS         string
+		BasePath    string
 	}{
-		Timestamp: time.Now(),
-		Pages:     g.pages,
-		CSS:       g.css,
-		BasePath:  g.basePath,
+		Timestamp:   time.Now(),
+		Pages:       g.pages,
+		StaticFiles: g.staticFiles,
+		CSS:         g.css,
+		BasePath:    g.basePath,
 	}
 
 	generator, err := template.New("go_pkg").Parse(packageTemplate)
@@ -81,9 +89,15 @@ const mimeCSS = "text/css"
 func Handler() http.Handler {
 	mux := http.NewServeMux()
 	mux.HandleFunc("{{.BasePath}}/markdown.css", cssHandler)
+
 {{- range .Pages}}
 	mux.HandleFunc("{{.WebPath}}", {{.Name}}Handler)
 {{- end}}
+
+{{- range .StaticFiles}}
+	mux.HandleFunc("{{.Path}}", {{.Name}}Handler)
+{{- end}}
+
 	return mux
 }
 
@@ -101,6 +115,17 @@ func {{.Name}}Handler(w http.ResponseWriter, req *http.Request) {
 
 	// nolint: errcheck
 	w.Write([]byte(` + "`{{.HTML}}`" + `))
+}
+{{- end}}
+
+{{- range .StaticFiles}}
+
+// nolint: golint
+func {{.Name}}Handler(w http.ResponseWriter, req *http.Request) {
+	w.Header().Set(contentType, "{{.ContentType}}")
+
+	// nolint: errcheck
+	w.Write([]byte(` + "`{{.Content}}`" + `))
 }
 {{- end}}
 `
