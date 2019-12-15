@@ -43,3 +43,12 @@ func (s byName) Less(i, j int) bool {
 	}
 	return s.pages[i].Name < s.pages[j].Name
 }
+
+type Files []File
+
+type File struct {
+	Name        string
+	Path        string
+	ContentType string
+	Content     string
+}
