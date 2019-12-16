@@ -90,7 +90,8 @@ func (sdr *serviceDocRenderer) findMDFiles(dir, basePath string) {
 	zap.L().Info("search for MD files")
 	files, err := ioutil.ReadDir(dir + "/")
 	if err != nil {
-		log.Fatal(err)
+		log.Print(err)
+		return
 	}
 
 	for _, f := range files {
@@ -117,7 +118,8 @@ func (sdr *serviceDocRenderer) findSVGFiles(dir, basePath string) {
 	zap.L().Info("search for SVG files")
 	files, err := ioutil.ReadDir(dir + "/static")
 	if err != nil {
-		log.Fatal(err)
+		log.Print(err)
+		return
 	}
 
 	for _, f := range files {
