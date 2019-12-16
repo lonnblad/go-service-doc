@@ -15,6 +15,7 @@ const markdownCSS = `@font-face {
   border-right: 2px solid #24292e;
   min-width: 20em;
   width: 20vw;
+  overflow: scroll;
 }
 .markdown-body .doc-container {
   padding-left: 1em;
