@@ -6,7 +6,15 @@ sudo: false
 
 install:
   - go get -u github.com/golangci/golangci-lint/cmd/golangci-lint
+  - go get -u github.com/go-playground/overalls
+  - go get -u github.com/mattn/goveralls
 
 script:
   - golangci-lint run ./...
+  - overalls -project=github.com/lonnblad/go-oc-aws-tracing -covermode=count -ignore='.git,vendor'
+  - goveralls -coverprofile=overalls.coverprofile -service=travis-ci -repotoken $COVERALLS_TOKEN
+  - go test -race -coverprofile=coverage.txt -covermode=atomic
   - go test ./...
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

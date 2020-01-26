@@ -1,4 +1,4 @@
-package main
+package example
 
 import (
 	"log"
@@ -11,7 +11,7 @@ import (
 
 const port = "8080"
 
-func main() {
+func MainExample() {
 	mux := mux.NewRouter()
 
 	mux.PathPrefix("/docs/service").Handler(service_docs.Handler())
