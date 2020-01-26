@@ -44,6 +44,12 @@ func main() {
 
 	flag.Parse()
 
+	if err := os.MkdirAll(*output, os.ModePerm); err != nil {
+		zap.L().
+			With(zap.Error(err), zap.String("output", *output)).
+			Error("Failed to create output directory")
+	}
+
 	renderer := serviceDocRenderer{
 		dir:             *dir,
 		output:          *output,
