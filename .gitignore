@@ -14,8 +14,3 @@
 .DS_Store
 
 vendor
-
-# Don't commit auto-generated docs
-example/docs/service/*
-!example/docs/service/*.md
-!example/docs/service/static

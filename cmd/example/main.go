@@ -1,4 +1,4 @@
-package example
+package main
 
 import (
 	"log"
@@ -6,12 +6,12 @@ import (
 
 	"github.com/gorilla/mux"
 
-	service_docs "github.com/lonnblad/go-service-doc/example/docs/service"
+	service_docs "github.com/lonnblad/go-service-doc/cmd/example/docs/generated"
 )
 
 const port = "8080"
 
-func MainExample() {
+func main() {
 	mux := mux.NewRouter()
 
 	mux.PathPrefix("/docs/service").Handler(service_docs.Handler())

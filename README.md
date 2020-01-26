@@ -6,4 +6,4 @@
 Tool to generate Service Documentation based on Markdown files.
 
 ### Usage
-- [Example](example)
+- [Example](cmd/example)
