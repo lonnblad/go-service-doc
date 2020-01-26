@@ -11,7 +11,7 @@ install:
 
 script:
   - golangci-lint run ./...
-  - overalls -project=github.com/lonnblad/go-oc-aws-tracing -covermode=count -ignore='.git,vendor'
+  - overalls -project=github.com/lonnblad/go-service-doc -covermode=count -ignore='.git,vendor'
   - goveralls -coverprofile=overalls.coverprofile -service=travis-ci -repotoken $COVERALLS_TOKEN
   - go test -race -coverprofile=coverage.txt -covermode=atomic
   - go test ./...
