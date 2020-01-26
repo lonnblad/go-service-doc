@@ -1,16 +1,19 @@
 [![Build Status](https://travis-ci.org/lonnblad/go-service-doc.svg?branch=master)](https://travis-ci.org/lonnblad/go-service-doc)
 [![Go Report Card](https://goreportcard.com/badge/github.com/lonnblad/go-service-doc)](https://goreportcard.com/report/github.com/lonnblad/go-service-doc)
-[![Coverage Status](https://coveralls.io/repos/github/lonnblad/go-service-doc/badge.svg?branch=master)](https://coveralls.io/github/lonnblad/go-service-doc?branch=master)
 
 # go-service-doc
 This a tool to generate Service Documentation based on standard Markdown files for a `go` application.
 
-It will convert the Markdown files to HTML pages, generate a menu based on `#` and `##` elements and adds CSS based on github.
+It will convert the Markdown files to HTML pages, generate a menu based on `#` and `##` elements and adds CSS similar to the CSS used by github.
 
 ## Usage
 
 ### Install
 > go get -u github.com/lonnblad/go-service-doc/cmd/go-service-doc
+
+### Run
+
+> go-service-doc
 
 ### Flags
 - **-s**
@@ -34,7 +37,7 @@ You can find this example with the markdown source files and the generated outpu
 
 To generate the output, the following is executed from [cmd/example](cmd/example).
 
-> `go-service-doc -d docs/src -o docs/generated -p /docs/service`.
+> go-service-doc -d docs/src -o docs/generated -p /docs/service
 
 Example code:
 ```go
