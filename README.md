@@ -2,20 +2,23 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/lonnblad/go-service-doc)](https://goreportcard.com/report/github.com/lonnblad/go-service-doc)
 
 # go-service-doc
-This a tool to generate Service Documentation based on standard Markdown files for a `go` application.
+This a tool to generate basic Service Documentation web pages based on standard Markdown files.
 
 It will convert the Markdown files to HTML pages, generate a menu based on `#` and `##` elements and adds CSS similar to the CSS used by github.
+
+Apart from standard Markdown syntax support, it features support for embedding svg files.
+
+It currently has support for generating standard HTML files and a `go` handler.
 
 ## Usage
 
 ### Install
-> go get -u github.com/lonnblad/go-service-doc/cmd/go-service-doc
+> go get -u github.com/lonnblad/go-service-doc
 
 ### Run
-
 > go-service-doc
 
-### Flags
+#### Flags
 - **-s**
 
     > The filename of the Markdown file to use for the base path, defaults to `service.md`.
@@ -67,3 +70,10 @@ func main() {
 	}
 }
 ```
+
+## Features
+- Side Menu Generator
+  - The Side Menu is generated based on the Markdown Header Elements: `#` and `##`. It will only generate entries for the headers that have a defined Header ID, like: `{#header_id}`.
+
+- Embedding SVG files
+  - All SVG files found in `<src_dir>/static` will be embedded in the generated go-handler and can be referenced through `<base_path>/static/<file_name>`.
