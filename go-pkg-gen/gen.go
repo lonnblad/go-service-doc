@@ -102,7 +102,6 @@ import (
 const contentType = "Content-Type"
 const mimeHTML = "text/html"
 const mimeCSS = "text/css"
-const mimeJSON = "application/json"
 
 func Handler() http.Handler {
 	index, _ := createSearchIndex()
@@ -125,16 +124,20 @@ func Handler() http.Handler {
 func cssHandler(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set(contentType, mimeCSS)
 
+	const content = ` + "`{{.CSS}}`" + `
+
 	// nolint: errcheck
-	w.Write([]byte(` + "`{{.CSS}}`" + `))
+	w.Write([]byte(content))
 }
 
 {{- range .Pages}}
 func {{.Name}}PageHandler(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set(contentType, mimeHTML)
 
+	const content = ` + "`{{.HTML}}`" + `
+
 	// nolint: errcheck
-	w.Write([]byte(` + "`{{.HTML}}`" + `))
+	w.Write([]byte(content))
 }
 {{end}}
 

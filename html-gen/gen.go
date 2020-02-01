@@ -99,13 +99,7 @@ const htmlPageTemplate = `<!DOCTYPE html>
 	  <div  class=menu-header>
 	    <h1>{{.API}}</h1>
 		<form class=menu-search action="{{.SearchLink}}" method="get">
-		  <input 
-			type="text"
-			placeholder="Search.."
-			name="q"
-			value="{{.QueryString}}"
-			onfocus="var temp_value=this.value; this.value=''; this.value=temp_value"
-			autofocus />
+		  <input type="text" placeholder="Search.." name="q" value="{{.QueryString}}" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" autofocus />
 		  <button type="submit">Search</button>
 	    </form>
 	  </div>
