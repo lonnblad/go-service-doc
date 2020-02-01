@@ -73,7 +73,13 @@ func main() {
 
 ## Features
 - Side Menu Generator
-  - The Side Menu is generated based on the Markdown Header Elements: `#` and `##`. It will only generate entries for the headers that have a defined Header ID, like: `{#header_id}`.
+
+  The Side Menu is generated based on the Markdown Header Elements: `#` and `##`. It will only generate entries for the headers that have a defined Header ID, like: `{#header_id}`.
+
+- Search Engine
+
+  The Side Menu features a Search field that can be used to search in all generated pages.
 
 - Embedding SVG files
-  - All SVG files found in `<src_dir>/static` will be embedded in the generated go-handler and can be referenced through `<base_path>/static/<file_name>`.
+
+  All SVG files found in `<src_dir>/static` will be embedded in the generated go-handler and can be referenced through `<base_path>/static/<file_name>`.
