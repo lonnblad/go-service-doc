@@ -7,18 +7,27 @@ import (
 type Pages []Page
 
 type Page struct {
-	Name     string
-	WebPath  string
-	Filepath string
-	Markdown string
-	HTML     string
-	Headers  []Header
+	Name           string
+	WebPath        string
+	Filepath       string
+	Markdown       string
+	HTML           string
+	Headers        []Header
+	IndexDocuments []IndexDocument
 }
 
 type Header struct {
 	Title   string
 	Link    string
 	Headers []Header
+}
+
+type IndexDocument struct {
+	ID      string
+	Link    string
+	Context []string
+	Content []string
+	HTML    string
 }
 
 func (ps Pages) SortByName(serviceName string) Pages {
@@ -48,6 +57,7 @@ type Files []File
 
 type File struct {
 	Name        string
+	Href        string
 	Path        string
 	ContentType string
 	Content     string
