@@ -101,7 +101,7 @@ func (p *Parser) findMDFiles() {
 		page.Name = utils.ConvertToCamelCase(page.Name)
 
 		if f.Name() != p.serviceFilename {
-			page.WebPath = p.basepath + "/" + page.Name
+			page.WebPath = p.basepath + "/" + utils.ConvertToKebabCase(page.Name)
 		} else {
 			page.WebPath = p.basepath
 			p.serviceName = page.Name
