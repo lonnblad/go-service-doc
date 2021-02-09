@@ -16,6 +16,7 @@ type Gen struct {
 	doc         string
 	searchLink  string
 	queryString string
+	basepath    string
 }
 
 func New() *Gen {
@@ -42,6 +43,11 @@ func (g *Gen) WithSearchLink(searchLink string) *Gen {
 	return g
 }
 
+func (g *Gen) WithBasepath(basepath string) *Gen {
+	g.basepath = basepath
+	return g
+}
+
 func (g *Gen) Build() (_ []byte, err error) {
 	templateInfo := struct {
 		API         string
@@ -49,12 +55,14 @@ func (g *Gen) Build() (_ []byte, err error) {
 		Doc         string
 		SearchLink  string
 		QueryString string
+		Basepath    string
 	}{
 		API:         g.api,
 		Pages:       g.pages,
 		Doc:         g.doc,
 		SearchLink:  g.searchLink,
 		QueryString: g.queryString,
+		Basepath:    g.basepath,
 	}
 
 	generator, err := template.New("html_page").Parse(htmlPageTemplate)
@@ -91,14 +99,14 @@ const htmlPageTemplate = `<!DOCTYPE html>
 <head>
   <title>{{.API}}</title>
   <meta name='generator' content='github.com/lonnblad/go-service-doc'>
-  <link rel="stylesheet" href="/docs/service/markdown.css">
+  <link rel="stylesheet" href="{{.Basepath}}/markdown.css">
 </head>
 <body class="markdown-body">
   <div class="flex-container">
 	<div class="menu-container">
 	  <div  class=menu-header>
 	    <h1>{{.API}}</h1>
-		<form class=menu-search action="{{.SearchLink}}" method="get">
+		<form class=menu-search action="{{.Basepath}}{{.SearchLink}}" method="get">
 		  <input type="text" placeholder="Search.." name="q" value="{{.QueryString}}" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" autofocus />
 		  <button type="submit">Search</button>
 	    </form>

@@ -1,4 +1,4 @@
-module github.com/lonnblad/go-service-doc
+module github.com/stroem/go-service-doc
 
 go 1.12
 
