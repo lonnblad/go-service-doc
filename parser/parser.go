@@ -11,9 +11,9 @@ import (
 	"github.com/russross/blackfriday"
 	"go.uber.org/zap"
 
-	"github.com/lonnblad/go-service-doc/core"
-	html_gen "github.com/lonnblad/go-service-doc/html-gen"
-	"github.com/lonnblad/go-service-doc/utils"
+	"github.com/stroem/go-service-doc/core"
+	html_gen "github.com/stroem/go-service-doc/html-gen"
+	"github.com/stroem/go-service-doc/utils"
 )
 
 type Parser struct {

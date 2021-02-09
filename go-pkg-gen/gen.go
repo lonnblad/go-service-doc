@@ -8,7 +8,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/lonnblad/go-service-doc/core"
+	"github.com/stroem/go-service-doc/core"
 )
 
 type Gen struct {

@@ -3,8 +3,8 @@ package utils_test
 import (
 	"testing"
 
-	"github.com/lonnblad/go-service-doc/utils"
 	"github.com/stretchr/testify/assert"
+	"github.com/stroem/go-service-doc/utils"
 )
 
 var camelCaseTCs = []tc{

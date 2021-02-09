@@ -7,9 +7,9 @@ import (
 	"github.com/pkg/errors"
 	"go.uber.org/zap"
 
-	"github.com/lonnblad/go-service-doc/core"
-	go_gen "github.com/lonnblad/go-service-doc/go-pkg-gen"
-	html_gen "github.com/lonnblad/go-service-doc/html-gen"
+	"github.com/stroem/go-service-doc/core"
+	go_gen "github.com/stroem/go-service-doc/go-pkg-gen"
+	html_gen "github.com/stroem/go-service-doc/html-gen"
 )
 
 type GoExporter struct {
