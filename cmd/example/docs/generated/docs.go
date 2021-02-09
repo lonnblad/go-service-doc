@@ -820,7 +820,7 @@ func cssHandler(w http.ResponseWriter, req *http.Request) {
 func servicePageHandler(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set(contentType, mimeHTML)
 
-	const content = `<!DOCTYPE html><html lang=en><head><title>Animal Bars</title><meta name='generator' content='github.com/lonnblad/go-service-doc'><link rel="stylesheet" href="/docs/service/markdown.css"></head><body class="markdown-body"><div class="flex-container"><div class="menu-container"><div  class=menu-header><h1>Animal Bars</h1><form class=menu-search action="/docs/service/search" method="get"><input type="text" placeholder="Search.." name="q" value="" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" autofocus /><button type="submit">Search</button></form></div><ul><li><a href="/docs/service#animal_bars">Animal Bars</a></li><li><a href="/docs/service/donkey-bar#donkey">Donkey Bar</a><ul><li><a href="/docs/service/donkey-bar#code_examples">Code Examples</a></li></ul></li><li><a href="/docs/service/monkey-bar#monkey">Monkey Bar</a><ul><li><a href="/docs/service/monkey-bar#code_examples">Code Examples</a></li></ul></li></ul></div><div class="doc-container"><h1 id="animal_bars">Animal Bars</h1><p><img src="/docs/service/static/animal-bars.svg" alt="The bars" /></p></div></div></body></html>`
+	const content = `<!DOCTYPE html><html lang=en><head><title>Animal Bars</title><meta name='generator' content='github.com/stroem/go-service-doc'><link rel="stylesheet" href="/docs/service/markdown.css"></head><body class="markdown-body"><div class="flex-container"><div class="menu-container"><div  class=menu-header><h1>Animal Bars</h1><form class=menu-search action="/docs/service/search" method="get"><input type="text" placeholder="Search.." name="q" value="" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" autofocus /><button type="submit">Search</button></form></div><ul><li><a href="/docs/service#animal_bars">Animal Bars</a></li><li><a href="/docs/service/donkey-bar#donkey">Donkey Bar</a><ul><li><a href="/docs/service/donkey-bar#code_examples">Code Examples</a></li></ul></li><li><a href="/docs/service/monkey-bar#monkey">Monkey Bar</a><ul><li><a href="/docs/service/monkey-bar#code_examples">Code Examples</a></li></ul></li></ul></div><div class="doc-container"><h1 id="animal_bars">Animal Bars</h1><p><img src="/docs/service/static/animal-bars.svg" alt="The bars" /></p></div></div></body></html>`
 
 	// nolint: errcheck
 	w.Write([]byte(content))
@@ -829,7 +829,7 @@ func servicePageHandler(w http.ResponseWriter, req *http.Request) {
 func donkeyBarPageHandler(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set(contentType, mimeHTML)
 
-	const content = `<!DOCTYPE html><html lang=en><head><title>Animal Bars</title><meta name='generator' content='github.com/lonnblad/go-service-doc'><link rel="stylesheet" href="/docs/service/markdown.css"></head><body class="markdown-body"><div class="flex-container"><div class="menu-container"><div  class=menu-header><h1>Animal Bars</h1><form class=menu-search action="/docs/service/search" method="get"><input type="text" placeholder="Search.." name="q" value="" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" autofocus /><button type="submit">Search</button></form></div><ul><li><a href="/docs/service#animal_bars">Animal Bars</a></li><li><a href="/docs/service/donkey-bar#donkey">Donkey Bar</a><ul><li><a href="/docs/service/donkey-bar#code_examples">Code Examples</a></li></ul></li><li><a href="/docs/service/monkey-bar#monkey">Monkey Bar</a><ul><li><a href="/docs/service/monkey-bar#code_examples">Code Examples</a></li></ul></li></ul></div><div class="doc-container"><h1 id="donkey">Donkey Bar</h1><h2 id="code_examples">Code Examples</h2><h3 id="go">go</h3><pre><code class="language-go">var i = 0
+	const content = `<!DOCTYPE html><html lang=en><head><title>Animal Bars</title><meta name='generator' content='github.com/stroem/go-service-doc'><link rel="stylesheet" href="/docs/service/markdown.css"></head><body class="markdown-body"><div class="flex-container"><div class="menu-container"><div  class=menu-header><h1>Animal Bars</h1><form class=menu-search action="/docs/service/search" method="get"><input type="text" placeholder="Search.." name="q" value="" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" autofocus /><button type="submit">Search</button></form></div><ul><li><a href="/docs/service#animal_bars">Animal Bars</a></li><li><a href="/docs/service/donkey-bar#donkey">Donkey Bar</a><ul><li><a href="/docs/service/donkey-bar#code_examples">Code Examples</a></li></ul></li><li><a href="/docs/service/monkey-bar#monkey">Monkey Bar</a><ul><li><a href="/docs/service/monkey-bar#code_examples">Code Examples</a></li></ul></li></ul></div><div class="doc-container"><h1 id="donkey">Donkey Bar</h1><h2 id="code_examples">Code Examples</h2><h3 id="go">go</h3><pre><code class="language-go">var i = 0
 </code></pre><h3 id="js">js</h3><pre><code class="language-javascript">let i = 0
 </code></pre></div></div></body></html>`
 
@@ -840,7 +840,7 @@ func donkeyBarPageHandler(w http.ResponseWriter, req *http.Request) {
 func monkeyBarPageHandler(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set(contentType, mimeHTML)
 
-	const content = `<!DOCTYPE html><html lang=en><head><title>Animal Bars</title><meta name='generator' content='github.com/lonnblad/go-service-doc'><link rel="stylesheet" href="/docs/service/markdown.css"></head><body class="markdown-body"><div class="flex-container"><div class="menu-container"><div  class=menu-header><h1>Animal Bars</h1><form class=menu-search action="/docs/service/search" method="get"><input type="text" placeholder="Search.." name="q" value="" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" autofocus /><button type="submit">Search</button></form></div><ul><li><a href="/docs/service#animal_bars">Animal Bars</a></li><li><a href="/docs/service/donkey-bar#donkey">Donkey Bar</a><ul><li><a href="/docs/service/donkey-bar#code_examples">Code Examples</a></li></ul></li><li><a href="/docs/service/monkey-bar#monkey">Monkey Bar</a><ul><li><a href="/docs/service/monkey-bar#code_examples">Code Examples</a></li></ul></li></ul></div><div class="doc-container"><h1 id="monkey">Monkey Bar</h1><h2 id="code_examples">Code Examples</h2><h3 id="go">go</h3><pre><code class="language-go">var i = 0
+	const content = `<!DOCTYPE html><html lang=en><head><title>Animal Bars</title><meta name='generator' content='github.com/stroem/go-service-doc'><link rel="stylesheet" href="/docs/service/markdown.css"></head><body class="markdown-body"><div class="flex-container"><div class="menu-container"><div  class=menu-header><h1>Animal Bars</h1><form class=menu-search action="/docs/service/search" method="get"><input type="text" placeholder="Search.." name="q" value="" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" autofocus /><button type="submit">Search</button></form></div><ul><li><a href="/docs/service#animal_bars">Animal Bars</a></li><li><a href="/docs/service/donkey-bar#donkey">Donkey Bar</a><ul><li><a href="/docs/service/donkey-bar#code_examples">Code Examples</a></li></ul></li><li><a href="/docs/service/monkey-bar#monkey">Monkey Bar</a><ul><li><a href="/docs/service/monkey-bar#code_examples">Code Examples</a></li></ul></li></ul></div><div class="doc-container"><h1 id="monkey">Monkey Bar</h1><h2 id="code_examples">Code Examples</h2><h3 id="go">go</h3><pre><code class="language-go">var i = 0
 </code></pre><h3 id="js">js</h3><pre><code class="language-javascript">let i = 0
 </code></pre></div></div></body></html>`
 
@@ -915,14 +915,14 @@ func searchHandler(searchIndex bleve.Index) func(http.ResponseWriter, *http.Requ
 func createSearchIndex() (searchIndex bleve.Index, err error) {
 	indexMapping := bleve.NewIndexMapping()
 	if searchIndex, err = bleve.NewMemOnly(indexMapping); err != nil {
- 		return
+		return
 	}
 
 	var doc document
 	doc = document{
 		Link:    "/docs/service#animal_bars",
-		Context: []string{ `Animal Bars`, `Animal Bars`, },
-		Content: []string{ `Animal Bars`, `The bars`, },
+		Context: []string{`Animal Bars`, `Animal Bars`},
+		Content: []string{`Animal Bars`, `The bars`},
 		HTML: `<h1 id="animal_bars">Animal Bars</h1>
 
 <p><img src="/docs/service/static/animal-bars.svg" alt="The bars" /></p>`,
@@ -934,9 +934,9 @@ func createSearchIndex() (searchIndex bleve.Index, err error) {
 
 	doc = document{
 		Link:    "/docs/service/donkey-bar#donkey",
-		Context: []string{ `Animal Bars`, `Donkey Bar`, },
-		Content: []string{ `Donkey Bar`, },
-		HTML: `<h1 id="donkey">Donkey Bar</h1>`,
+		Context: []string{`Animal Bars`, `Donkey Bar`},
+		Content: []string{`Donkey Bar`},
+		HTML:    `<h1 id="donkey">Donkey Bar</h1>`,
 	}
 
 	if err = searchIndex.Index("/docs/service/donkey-bar#donkey", doc); err != nil {
@@ -945,9 +945,9 @@ func createSearchIndex() (searchIndex bleve.Index, err error) {
 
 	doc = document{
 		Link:    "/docs/service/donkey-bar#code_examples",
-		Context: []string{ `Animal Bars`, `Donkey Bar`, `Code Examples`, },
-		Content: []string{ `Code Examples`, },
-		HTML: `<h2 id="code_examples">Code Examples</h2>`,
+		Context: []string{`Animal Bars`, `Donkey Bar`, `Code Examples`},
+		Content: []string{`Code Examples`},
+		HTML:    `<h2 id="code_examples">Code Examples</h2>`,
 	}
 
 	if err = searchIndex.Index("/docs/service/donkey-bar#code_examples", doc); err != nil {
@@ -956,9 +956,9 @@ func createSearchIndex() (searchIndex bleve.Index, err error) {
 
 	doc = document{
 		Link:    "/docs/service/donkey-bar#go",
-		Context: []string{ `Animal Bars`, `Donkey Bar`, `Code Examples`, `go`, },
-		Content: []string{ `go`, `go
-var i = 0`, },
+		Context: []string{`Animal Bars`, `Donkey Bar`, `Code Examples`, `go`},
+		Content: []string{`go`, `go
+var i = 0`},
 		HTML: `<h3 id="go">go</h3>
 
 <pre><code class="language-go">var i = 0
@@ -971,9 +971,9 @@ var i = 0`, },
 
 	doc = document{
 		Link:    "/docs/service/donkey-bar#js",
-		Context: []string{ `Animal Bars`, `Donkey Bar`, `Code Examples`, `js`, },
-		Content: []string{ `js`, `javascript
-let i = 0`, },
+		Context: []string{`Animal Bars`, `Donkey Bar`, `Code Examples`, `js`},
+		Content: []string{`js`, `javascript
+let i = 0`},
 		HTML: `<h3 id="js">js</h3>
 
 <pre><code class="language-javascript">let i = 0
@@ -986,9 +986,9 @@ let i = 0`, },
 
 	doc = document{
 		Link:    "/docs/service/monkey-bar#monkey",
-		Context: []string{ `Animal Bars`, `Monkey Bar`, },
-		Content: []string{ `Monkey Bar`, },
-		HTML: `<h1 id="monkey">Monkey Bar</h1>`,
+		Context: []string{`Animal Bars`, `Monkey Bar`},
+		Content: []string{`Monkey Bar`},
+		HTML:    `<h1 id="monkey">Monkey Bar</h1>`,
 	}
 
 	if err = searchIndex.Index("/docs/service/monkey-bar#monkey", doc); err != nil {
@@ -997,9 +997,9 @@ let i = 0`, },
 
 	doc = document{
 		Link:    "/docs/service/monkey-bar#code_examples",
-		Context: []string{ `Animal Bars`, `Monkey Bar`, `Code Examples`, },
-		Content: []string{ `Code Examples`, },
-		HTML: `<h2 id="code_examples">Code Examples</h2>`,
+		Context: []string{`Animal Bars`, `Monkey Bar`, `Code Examples`},
+		Content: []string{`Code Examples`},
+		HTML:    `<h2 id="code_examples">Code Examples</h2>`,
 	}
 
 	if err = searchIndex.Index("/docs/service/monkey-bar#code_examples", doc); err != nil {
@@ -1008,9 +1008,9 @@ let i = 0`, },
 
 	doc = document{
 		Link:    "/docs/service/monkey-bar#go",
-		Context: []string{ `Animal Bars`, `Monkey Bar`, `Code Examples`, `go`, },
-		Content: []string{ `go`, `go
-var i = 0`, },
+		Context: []string{`Animal Bars`, `Monkey Bar`, `Code Examples`, `go`},
+		Content: []string{`go`, `go
+var i = 0`},
 		HTML: `<h3 id="go">go</h3>
 
 <pre><code class="language-go">var i = 0
@@ -1023,9 +1023,9 @@ var i = 0`, },
 
 	doc = document{
 		Link:    "/docs/service/monkey-bar#js",
-		Context: []string{ `Animal Bars`, `Monkey Bar`, `Code Examples`, `js`, },
-		Content: []string{ `js`, `javascript
-let i = 0`, },
+		Context: []string{`Animal Bars`, `Monkey Bar`, `Code Examples`, `js`},
+		Content: []string{`js`, `javascript
+let i = 0`},
 		HTML: `<h3 id="js">js</h3>
 
 <pre><code class="language-javascript">let i = 0
@@ -1056,7 +1056,7 @@ func createSearchPage(queryString string, searchResult []document) []byte {
 	return []byte(page)
 }
 
-const searchPage = `<!DOCTYPE html><html lang=en><head><title>Animal Bars</title><meta name='generator' content='github.com/lonnblad/go-service-doc'><link rel="stylesheet" href="/docs/service/markdown.css"></head><body class="markdown-body"><div class="flex-container"><div class="menu-container"><div  class=menu-header><h1>Animal Bars</h1><form class=menu-search action="/docs/service/search" method="get"><input type="text" placeholder="Search.." name="q" value="<query_string>" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" autofocus /><button type="submit">Search</button></form></div><ul><li><a href="/docs/service#animal_bars">Animal Bars</a></li><li><a href="/docs/service/donkey-bar#donkey">Donkey Bar</a><ul><li><a href="/docs/service/donkey-bar#code_examples">Code Examples</a></li></ul></li><li><a href="/docs/service/monkey-bar#monkey">Monkey Bar</a><ul><li><a href="/docs/service/monkey-bar#code_examples">Code Examples</a></li></ul></li></ul></div><div class="doc-container"><search_result></div></div></body></html>`
+const searchPage = `<!DOCTYPE html><html lang=en><head><title>Animal Bars</title><meta name='generator' content='github.com/stroem/go-service-doc'><link rel="stylesheet" href="/docs/service/markdown.css"></head><body class="markdown-body"><div class="flex-container"><div class="menu-container"><div  class=menu-header><h1>Animal Bars</h1><form class=menu-search action="/docs/service/search" method="get"><input type="text" placeholder="Search.." name="q" value="<query_string>" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" autofocus /><button type="submit">Search</button></form></div><ul><li><a href="/docs/service#animal_bars">Animal Bars</a></li><li><a href="/docs/service/donkey-bar#donkey">Donkey Bar</a><ul><li><a href="/docs/service/donkey-bar#code_examples">Code Examples</a></li></ul></li><li><a href="/docs/service/monkey-bar#monkey">Monkey Bar</a><ul><li><a href="/docs/service/monkey-bar#code_examples">Code Examples</a></li></ul></li></ul></div><div class="doc-container"><search_result></div></div></body></html>`
 
 type document struct {
 	Link    string

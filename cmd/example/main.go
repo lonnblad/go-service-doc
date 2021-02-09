@@ -6,7 +6,7 @@ import (
 
 	"github.com/gorilla/mux"
 
-	service_docs "github.com/lonnblad/go-service-doc/cmd/example/docs/generated"
+	service_docs "github.com/stroem/go-service-doc/cmd/example/docs/generated"
 )
 
 const port = "8080"

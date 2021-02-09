@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/lonnblad/go-service-doc.svg?branch=master)](https://travis-ci.org/lonnblad/go-service-doc)
-[![Go Report Card](https://goreportcard.com/badge/github.com/lonnblad/go-service-doc)](https://goreportcard.com/report/github.com/lonnblad/go-service-doc)
+[![Go Report Card](https://goreportcard.com/badge/github.com/stroem/go-service-doc)](https://goreportcard.com/report/github.com/stroem/go-service-doc)
 [![Coverage Status](https://coveralls.io/repos/github/lonnblad/go-service-doc/badge.svg?branch=master)](https://coveralls.io/github/lonnblad/go-service-doc?branch=master)
 
 # go-service-doc
@@ -14,7 +14,7 @@ It currently has support for generating standard HTML files and a `go` handler.
 ## Usage
 
 ### Install
-> go get -u github.com/lonnblad/go-service-doc
+> go get -u github.com/stroem/go-service-doc
 
 ### Run
 > go-service-doc
@@ -53,7 +53,7 @@ import (
 
 	"github.com/gorilla/mux"
 
-	service_docs "github.com/lonnblad/go-service-doc/cmd/example/docs/generated"
+	service_docs "github.com/stroem/go-service-doc/cmd/example/docs/generated"
 )
 
 const port = "8080"
