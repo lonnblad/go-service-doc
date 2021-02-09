@@ -307,7 +307,8 @@ func (p *Parser) buildSearchPage() {
 	searchPage, err := html_gen.New().
 		WithAPITitle(p.serviceTitle).
 		WithPages(p.pages).
-		WithSearchLink(p.basepath + "/search").
+		WithSearchLink("/search").
+		WithBasepath(p.basepath).
 		BuildSearchPageTemplate()
 	if err != nil {
 		p.err = errors.Wrap(err, "html_gen.BuildSearchPageTemplate failed")
@@ -327,7 +328,8 @@ func (p *Parser) buildHTMLPages() {
 			WithAPITitle(p.serviceTitle).
 			WithPages(p.pages).
 			WithDocument(page.Markdown).
-			WithSearchLink(p.basepath + "/search").
+			WithSearchLink("/search").
+			WithBasepath(p.basepath).
 			Build()
 		if err != nil {
 			p.err = errors.Wrap(err, "html_gen.Build failed")
