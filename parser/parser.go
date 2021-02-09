@@ -8,7 +8,7 @@ import (
 	"strings"
 
 	"github.com/pkg/errors"
-	"github.com/russross/blackfriday"
+	"github.com/russross/blackfriday/v2"
 	"go.uber.org/zap"
 
 	"github.com/stroem/go-service-doc/core"
