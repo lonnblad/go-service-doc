@@ -1,4 +1,4 @@
-# Monkey Bar {#monkey}
+# Labrador Bar {#labrador}
 
 ## Code Examples {#code_examples}
 
