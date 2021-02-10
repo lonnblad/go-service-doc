@@ -94,6 +94,7 @@ func GetMarkdownCSS() []byte {
 	return []byte(markdownCSS)
 }
 
+// nolint: lll
 const htmlPageTemplate = `<!DOCTYPE html>
 <html lang=en>
 <head>

@@ -33,6 +33,7 @@ type IndexDocument struct {
 func (ps Pages) SortByName(serviceName string) Pages {
 	bn := byName{serviceName: serviceName, pages: ps}
 	sort.Sort(bn)
+
 	return ps
 }
 
@@ -47,9 +48,11 @@ func (s byName) Less(i, j int) bool {
 	if s.pages[i].Name == s.serviceName {
 		return true
 	}
+
 	if s.pages[j].Name == s.serviceName {
 		return false
 	}
+
 	return s.pages[i].Name < s.pages[j].Name
 }
 

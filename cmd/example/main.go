@@ -19,6 +19,7 @@ func main() {
 	server := &http.Server{Addr: ":" + port, Handler: mux}
 
 	log.Printf("Will start to listen and serve on port %s", port)
+
 	if err := server.ListenAndServe(); err != http.ErrServerClosed {
 		log.Fatal("HTTP server ListenAndServe")
 	}

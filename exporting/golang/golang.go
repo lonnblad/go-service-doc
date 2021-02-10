@@ -10,6 +10,7 @@ import (
 	"github.com/lonnblad/go-service-doc/core"
 	go_gen "github.com/lonnblad/go-service-doc/go-pkg-gen"
 	html_gen "github.com/lonnblad/go-service-doc/html-gen"
+	"github.com/lonnblad/go-service-doc/utils"
 )
 
 type GoExporter struct {
@@ -56,6 +57,7 @@ func (goex *GoExporter) Error() error {
 
 func (goex *GoExporter) Run() {
 	zap.L().Info("building go pkg")
+
 	css := html_gen.GetMarkdownCSS()
 
 	fileContent, err := go_gen.New().
@@ -74,12 +76,13 @@ func (goex *GoExporter) Run() {
 	filepath := goex.outputDir + "/" + "docs.go"
 
 	zap.L().Info("exporting go pkg")
+
 	if err := os.MkdirAll(goex.outputDir, os.ModePerm); err != nil {
 		goex.err = errors.Wrap(err, "os.MkdirAll failed")
 		return
 	}
 
-	if err := ioutil.WriteFile(filepath, fileContent, 0644); err != nil {
+	if err := ioutil.WriteFile(filepath, fileContent, utils.FilePermission); err != nil {
 		goex.err = errors.Wrap(err, "ioutil.WriteFile failed")
 		return
 	}
