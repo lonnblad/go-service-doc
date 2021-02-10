@@ -1,4 +1,4 @@
-[![Release](https://img.shields.io/github/release/atrox/sync-dotenv.svg?style=flat-square)](https://github.com/lonnblad/go-service-doc/releases/latest)
+[![Release](https://img.shields.io/github/v/release/lonnblad/go-service-doc)](https://github.com/lonnblad/go-service-doc/releases/latest)
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Flonnblad%2Fgo-service-doc%2Fbadge&style=flat)](https://actions-badge.atrox.dev/lonnblad/go-service-doc/goto)
 [![Go Report Card](https://goreportcard.com/badge/github.com/lonnblad/go-service-doc)](https://goreportcard.com/report/github.com/lonnblad/go-service-doc)
 [![Coverage Status](https://coveralls.io/repos/github/lonnblad/go-service-doc/badge.svg?branch=master)](https://coveralls.io/github/lonnblad/go-service-doc?branch=master)
