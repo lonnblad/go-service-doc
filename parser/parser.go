@@ -8,7 +8,7 @@ import (
 	"strings"
 
 	"github.com/pkg/errors"
-	"github.com/russross/blackfriday"
+	"github.com/russross/blackfriday/v2"
 	"go.uber.org/zap"
 
 	"github.com/lonnblad/go-service-doc/core"
@@ -161,7 +161,7 @@ func (p *Parser) parseMarkdown() {
 		}
 
 		// Convert Markdown to HTML
-		exts := blackfriday.NoIntraEmphasis | blackfriday.AutoHeadingIDs | blackfriday.HeadingIDs | blackfriday.FencedCode | blackfriday.HardLineBreak
+		exts := blackfriday.NoIntraEmphasis | blackfriday.AutoHeadingIDs | blackfriday.HeadingIDs | blackfriday.FencedCode | blackfriday.HardLineBreak | blackfriday.Tables
 		markdown := blackfriday.Run(content, blackfriday.WithExtensions(exts))
 		page.Markdown = string(markdown)
 
