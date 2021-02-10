@@ -46,6 +46,7 @@ func main() {
 		ServiceFilename(*serviceFilename)
 
 	mdParser.Run()
+
 	if err := mdParser.Error(); err != nil {
 		zap.L().
 			With(zap.Error(err)).
