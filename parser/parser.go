@@ -34,6 +34,7 @@ func NewParser() *Parser {
 	p := Parser{
 		uniqueLinks: make(map[string]bool),
 	}
+
 	return &p
 }
 
@@ -57,6 +58,7 @@ func (se *Parser) ServiceFilename(serviceFilename string) *Parser {
 	return se
 }
 
+// nolint: stylecheck
 func (p *Parser) Error() error {
 	return p.err
 }
@@ -151,7 +153,8 @@ func (p *Parser) findSVGFiles() {
 }
 
 func (p *Parser) parseMarkdown() {
-	for idx, page := range p.pages {
+	for idx, pg := range p.pages {
+		page := pg
 		zap.L().With(zap.String("page", page.Name)).Info("parsing markdown")
 
 		content, err := ioutil.ReadFile(page.Filepath)
@@ -161,7 +164,13 @@ func (p *Parser) parseMarkdown() {
 		}
 
 		// Convert Markdown to HTML
-		exts := blackfriday.NoIntraEmphasis | blackfriday.AutoHeadingIDs | blackfriday.HeadingIDs | blackfriday.FencedCode | blackfriday.HardLineBreak | blackfriday.Tables
+		exts := blackfriday.NoIntraEmphasis |
+			blackfriday.AutoHeadingIDs |
+			blackfriday.HeadingIDs |
+			blackfriday.FencedCode |
+			blackfriday.HardLineBreak |
+			blackfriday.Tables
+
 		markdown := blackfriday.Run(content, blackfriday.WithExtensions(exts))
 		page.Markdown = string(markdown)
 
@@ -179,9 +188,7 @@ func (p *Parser) parseMarkdown() {
 
 func (p *Parser) menuWalker(page *core.Page) blackfriday.NodeVisitor {
 	return func(node *blackfriday.Node, entering bool) blackfriday.WalkStatus {
-		if node.Type != blackfriday.Heading ||
-			!entering ||
-			string(node.FirstChild.Literal) == "" {
+		if node.Type != blackfriday.Heading || !entering || string(node.FirstChild.Literal) == "" {
 			return blackfriday.GoToNext
 		}
 
@@ -199,28 +206,30 @@ func (p *Parser) menuWalker(page *core.Page) blackfriday.NodeVisitor {
 		}
 
 		p.uniqueLinks[link] = true
-		h := core.Header{
-			Title: string(node.FirstChild.Literal),
-			Link:  link,
-		}
+		h := core.Header{Title: string(node.FirstChild.Literal), Link: link}
 
 		if node.Level == 1 {
 			if p.serviceName == page.Name && p.serviceTitle == "" {
 				p.serviceTitle = h.Title
 			}
+
 			page.Headers = append(page.Headers, h)
-		} else {
-			idx := len(page.Headers) - 1
-			page.Headers[idx].Headers = append(page.Headers[idx].Headers, h)
+
+			return blackfriday.GoToNext
 		}
+
+		idx := len(page.Headers) - 1
+		page.Headers[idx].Headers = append(page.Headers[idx].Headers, h)
 
 		return blackfriday.GoToNext
 	}
 }
 
 func (p *Parser) searchWalker(page *core.Page) blackfriday.NodeVisitor {
-	var currentDoc core.IndexDocument
-	var uniqueIndexes = map[string]bool{}
+	var (
+		currentDoc    core.IndexDocument
+		uniqueIndexes = map[string]bool{}
+	)
 
 	return func(node *blackfriday.Node, entering bool) blackfriday.WalkStatus {
 		if !entering {
@@ -241,22 +250,21 @@ func (p *Parser) searchWalker(page *core.Page) blackfriday.NodeVisitor {
 				ctxIdx = len(currentDoc.Context) - 1
 			}
 
-			var context = make([]string, len(currentDoc.Context[:ctxIdx]))
-			copy(context, currentDoc.Context[:ctxIdx])
-
 			originalHeadingID := node.HeadingID
-			var uniqueID = originalHeadingID
-			var n = 1
+			uniqueID := originalHeadingID
+			n := 1
+
 			for uniqueIndexes[uniqueID] {
 				uniqueID = fmt.Sprintf("%s-%d", originalHeadingID, n)
 				n++
 			}
+
 			uniqueIndexes[uniqueID] = true
 
 			currentDoc = core.IndexDocument{}
 			currentDoc.ID = uniqueID
 			currentDoc.Link = fmt.Sprintf("%s#%s", page.WebPath, uniqueID)
-			currentDoc.Context = append(context, string(node.FirstChild.Literal))
+			currentDoc.Context = append(currentDoc.Context[:ctxIdx], string(node.FirstChild.Literal))
 
 			return blackfriday.GoToNext
 		}
@@ -269,6 +277,7 @@ func (p *Parser) searchWalker(page *core.Page) blackfriday.NodeVisitor {
 		if content != "" {
 			currentDoc.Content = append(currentDoc.Content, content)
 		}
+
 		return blackfriday.GoToNext
 	}
 }
@@ -285,6 +294,7 @@ func (p *Parser) enrichIndexDocumentsWithHTML() {
 			idx1 := re1.FindStringIndex(page.Markdown)[0]
 
 			var idx2 = len(page.Markdown)
+
 			if jdx != len(page.IndexDocuments)-1 {
 				re2 := regexp.MustCompile(`\<h\d+ id\=\"` + page.IndexDocuments[jdx+1].ID + `\"`)
 				idx2 = re2.FindStringIndex(page.Markdown)[0]

@@ -30,6 +30,7 @@ func (g *Gen) WithPages(pages core.Pages) *Gen {
 		g.pages = append(g.pages, page)
 		g.indexDocuments = append(g.indexDocuments, page.IndexDocuments...)
 	}
+
 	return g
 }
 
@@ -79,8 +80,7 @@ func (g *Gen) Build() (_ []byte, err error) {
 	}
 
 	buffer := &bytes.Buffer{}
-	err = generator.Execute(buffer, templateInfo)
-	if err != nil {
+	if err = generator.Execute(buffer, templateInfo); err != nil {
 		err = errors.Wrapf(err, "failed to execute generator")
 		return
 	}

@@ -10,6 +10,7 @@ import (
 
 	"github.com/lonnblad/go-service-doc/core"
 	html_gen "github.com/lonnblad/go-service-doc/html-gen"
+	"github.com/lonnblad/go-service-doc/utils"
 )
 
 type SimpleExporter struct {
@@ -79,7 +80,7 @@ func exportHTMLPages(pages core.Pages, sourceDir, outputDir string) error {
 		filepath := strings.ReplaceAll(page.Filepath, ".md", ".html")
 		filepath = strings.ReplaceAll(filepath, sourceDir, outputDir)
 
-		if err := ioutil.WriteFile(filepath, []byte(page.HTML), 0644); err != nil {
+		if err := ioutil.WriteFile(filepath, []byte(page.HTML), utils.FilePermission); err != nil {
 			return errors.Wrap(err, "ioutil.WriteFile failed")
 		}
 	}
@@ -93,7 +94,7 @@ func exportCSSFile(outputDir string) error {
 
 	zap.L().With(zap.String("file", "markdown.css")).Info("exporting CSS file")
 
-	if err := ioutil.WriteFile(filepath, css, 0644); err != nil {
+	if err := ioutil.WriteFile(filepath, css, utils.FilePermission); err != nil {
 		return errors.Wrap(err, "ioutil.WriteFile failed")
 	}
 
@@ -106,7 +107,7 @@ func exportStaticFiles(staticFiles core.Files, sourceDir, outputDir string) erro
 
 		zap.L().With(zap.String("file", file.Name)).Info("exporting static file")
 
-		if err := ioutil.WriteFile(filepath, []byte(file.Content), 0644); err != nil {
+		if err := ioutil.WriteFile(filepath, []byte(file.Content), utils.FilePermission); err != nil {
 			return errors.Wrap(err, "ioutil.WriteFile failed")
 		}
 	}

@@ -29,18 +29,22 @@ type tc struct {
 
 func Test_ConvertToCamelCase(t *testing.T) {
 	for _, tc := range camelCaseTCs {
-		t.Run(tc.name, func(t *testing.T) {
-			actual := utils.ConvertToCamelCase(tc.input)
-			assert.Equal(t, tc.expected, actual)
+		testcase := tc
+
+		t.Run(testcase.name, func(t *testing.T) {
+			actual := utils.ConvertToCamelCase(testcase.input)
+			assert.Equal(t, testcase.expected, actual)
 		})
 	}
 }
 
 func Test_ConvertToKebabCase(t *testing.T) {
 	for _, tc := range kebabCaseTCs {
-		t.Run(tc.name, func(t *testing.T) {
-			actual := utils.ConvertToKebabCase(tc.input)
-			assert.Equal(t, tc.expected, actual)
+		testcase := tc
+
+		t.Run(testcase.name, func(t *testing.T) {
+			actual := utils.ConvertToKebabCase(testcase.input)
+			assert.Equal(t, testcase.expected, actual)
 		})
 	}
 }

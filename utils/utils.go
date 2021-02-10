@@ -1,13 +1,17 @@
 package utils
 
-import "strings"
+import (
+	"regexp"
+	"strings"
+)
 
-import "regexp"
+const FilePermission = 0644
 
 func ConvertToCamelCase(str string) string {
 	str = convertSpaceCaseToCamel(str)
 	str = convertKebabCaseToCamel(str)
 	str = convertSnakeCaseToCamel(str)
+
 	return str
 }
 
@@ -29,8 +33,10 @@ func convertToCamelCase(str, fromCase string) string {
 		if idx == 0 {
 			continue
 		}
+
 		parts[idx] = strings.Title(part)
 	}
+
 	return strings.Join(parts, "")
 }
 
@@ -38,6 +44,7 @@ func ConvertToKebabCase(str string) string {
 	str = convertSpaceCaseToKebab(str)
 	str = convertCamelCaseToKebab(str)
 	str = convertSnakeCaseToKebab(str)
+
 	return str
 }
 
@@ -48,6 +55,7 @@ func convertSpaceCaseToKebab(str string) string {
 func convertCamelCaseToKebab(str string) string {
 	reg := regexp.MustCompile(`([A-Z])`)
 	str = reg.ReplaceAllString(str, "-$1")
+
 	return strings.ToLower(str)
 }
 
