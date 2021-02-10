@@ -1,8 +1,10 @@
-[![Build Status](https://travis-ci.org/lonnblad/go-service-doc.svg?branch=master)](https://travis-ci.org/lonnblad/go-service-doc)
+[![Release](https://img.shields.io/github/release/atrox/sync-dotenv.svg?style=flat-square)](https://github.com/lonnblad/go-service-doc/releases/latest)
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Flonnblad%2Fgo-service-doc%2Fbadge&style=flat)](https://actions-badge.atrox.dev/lonnblad/go-service-doc/goto)
 [![Go Report Card](https://goreportcard.com/badge/github.com/lonnblad/go-service-doc)](https://goreportcard.com/report/github.com/lonnblad/go-service-doc)
 [![Coverage Status](https://coveralls.io/repos/github/lonnblad/go-service-doc/badge.svg?branch=master)](https://coveralls.io/github/lonnblad/go-service-doc?branch=master)
 
 # go-service-doc
+
 This a tool to generate basic Service Documentation web pages based on standard Markdown files.
 
 It will convert the Markdown files to HTML pages, generate a menu based on `#` and `##` elements and add CSS similar to the CSS used by github to display Markdown files. HTML pages will have the kebab-case version of the filename as the URL.
@@ -14,29 +16,33 @@ It currently has support for generating standard HTML files and a `go` handler.
 ## Usage
 
 ### Install
+
 > go get -u github.com/lonnblad/go-service-doc
 
 ### Run
+
 > go-service-doc
 
 #### Flags
+
 - **-s**
 
-    > The filename of the Markdown file to use for the base path, defaults to `service.md`.
+  > The filename of the Markdown file to use for the base path, defaults to `service.md`.
 
 - **-d**
 
-    > The Directory where the markdown files are located, defaults to `docs`.
+  > The Directory where the markdown files are located, defaults to `docs`.
 
 - **-o**
 
-    > The Directory where to write the generated files, defaults to `docs`.
+  > The Directory where to write the generated files, defaults to `docs`.
 
 - **-p**
 
-    > Base path to add for the generated documentation, defaults to `/docs`.
+  > Base path to add for the generated documentation, defaults to `/docs`.
 
 ### Example
+
 You can find this example with the markdown source files and the generated output in [cmd/example](cmd/example).
 
 To generate the output, the following is executed from [cmd/example](cmd/example).
@@ -44,6 +50,7 @@ To generate the output, the following is executed from [cmd/example](cmd/example
 > go-service-doc -d docs/src -o docs/generated -p /docs/service
 
 Example code:
+
 ```go
 package main
 
@@ -73,6 +80,7 @@ func main() {
 ```
 
 ## Features
+
 - HTML Page Generator
 
   It will convert the Markdown files to HTML pages and add CSS similar to the CSS used by github to display Markdown files. The URL for the generated HTML page will be the kebab-case version of the filename excluding the extension, i.e. `monkey_bar.md` will be `/<base_path>/monkey-bar`.
