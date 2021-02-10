@@ -48,8 +48,7 @@ func main() {
 	mdParser.Run()
 
 	if err := mdParser.Error(); err != nil {
-		zap.L().
-			With(zap.Error(err)).
+		zap.L().With(zap.Error(err)).
 			Error("parser returned an error")
 
 		return
@@ -68,8 +67,7 @@ func main() {
 	simpleExporter.Run()
 
 	if err := simpleExporter.Error(); err != nil {
-		zap.L().
-			With(zap.Error(err)).
+		zap.L().With(zap.Error(err)).
 			Error("exporting simple returned an error")
 
 		return
@@ -85,8 +83,7 @@ func main() {
 	goExporter.Run()
 
 	if err := goExporter.Error(); err != nil {
-		zap.L().
-			With(zap.Error(err)).
+		zap.L().With(zap.Error(err)).
 			Error("exporting golang returned an error")
 
 		return
