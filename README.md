@@ -47,7 +47,7 @@ You can find this example with the markdown source files and the generated outpu
 
 To generate the output, the following is executed from [cmd/example](cmd/example).
 
-> go-service-doc -d docs/src -o docs/generated -p /docs/service
+> go-service-doc -s bars.md -d docs/src -o docs/generated -p /bars
 
 Example code:
 
@@ -68,7 +68,7 @@ const port = "8080"
 func main() {
 	mux := mux.NewRouter()
 
-	mux.PathPrefix("/docs/service").Handler(service_docs.Handler())
+	mux.PathPrefix("/bars").Handler(service_docs.Handler())
 
 	server := &http.Server{Addr: ":" + port, Handler: mux}
 
