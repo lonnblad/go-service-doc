@@ -264,7 +264,7 @@ func (p *Parser) searchWalker(page *core.Page) blackfriday.NodeVisitor {
 			currentDoc = core.IndexDocument{}
 			currentDoc.ID = uniqueID
 			currentDoc.Link = fmt.Sprintf("%s#%s", page.WebPath, uniqueID)
-			// currentDoc.Context = append(currentDoc.Context[:ctxIdx], string(node.FirstChild.Literal))
+			currentDoc.Context = append(currentDoc.Context[:ctxIdx], string(node.FirstChild.Literal))
 
 			return blackfriday.GoToNext
 		}
