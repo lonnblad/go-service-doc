@@ -9,16 +9,31 @@
 }
 
 .markdown-body .menu-container {
-  padding-right: 0.5em;
-  border-right: 2px solid #24292e;
+  padding: 1em 1.5em;
   min-width: 20em;
   width: 20vw;
   overflow: scroll;
+  background-color: #f5f5f5;
+  border: #e8e8e8 solid;
+  border-width: 0 1px 0 0;
+}
+
+.markdown-body .menu-container ul {
+  margin-top: 0.25em;
+  padding-left: 1em;
+  list-style: none;
+}
+
+.markdown-body .menu-container ul li::before {
+  content: "\2022";
+  color: #444;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -0.5em;
 }
 
 .markdown-body .menu-container .menu-header {
-  padding-left: 16px;
-  padding-right: 8px;
   padding-bottom: 16px;
 }
 
@@ -27,8 +42,8 @@
 }
 
 .markdown-body .menu-container .menu-header .menu-search input[type=text] {
-  padding: 4px;
-  font-size: 16px;
+  padding: 5px 10px;
+  font-size: 14px;
   width: 100%;
 }
 
@@ -39,7 +54,7 @@
 .markdown-body .menu-container .menu-header .menu-search button {
   padding: 8px 10px;
   background: #ddd;
-  font-size: 17px;
+  font-size: 14px;
   border: none;
   cursor: pointer;
 }
@@ -49,9 +64,13 @@
 }
 
 .markdown-body .doc-container {
-  padding: 0em 1em;
-  width: 80vw;
+  width: 100%;
   overflow: scroll;
+  max-width: 1000px;
+  min-width: 400px;
+  padding: 16px 32px;
+  margin: 0 auto;
+  display: block;
 }
 
 .markdown-body .doc-container .search-result-card {
@@ -246,7 +265,8 @@
   line-height: inherit;
 }
 .markdown-body a {
-  color: #0366d6;
+  font-size: 15px;
+  color: #1978c8;
   text-decoration: none;
 }
 .markdown-body a:hover {
