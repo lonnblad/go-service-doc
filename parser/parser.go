@@ -250,6 +250,11 @@ func (p *Parser) searchWalker(page *core.Page) blackfriday.NodeVisitor {
 				ctxIdx = len(currentDoc.Context) - 1
 			}
 
+			var context = make([]string, len(currentDoc.Context[:ctxIdx])+1)
+
+			copy(context[:ctxIdx], currentDoc.Context[:ctxIdx])
+			context[len(context)-1] = string(node.FirstChild.Literal)
+
 			originalHeadingID := node.HeadingID
 			uniqueID := originalHeadingID
 			n := 1
@@ -264,7 +269,7 @@ func (p *Parser) searchWalker(page *core.Page) blackfriday.NodeVisitor {
 			currentDoc = core.IndexDocument{}
 			currentDoc.ID = uniqueID
 			currentDoc.Link = fmt.Sprintf("%s#%s", page.WebPath, uniqueID)
-			currentDoc.Context = append(currentDoc.Context[:ctxIdx], string(node.FirstChild.Literal))
+			currentDoc.Context = context
 
 			return blackfriday.GoToNext
 		}
