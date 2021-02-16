@@ -25,6 +25,7 @@ jobs:
         with:
           go-version: ${{ matrix.go }}
       - uses: actions/checkout@v2
+      - run: go run main.go -d cmd/example/docs/src -o cmd/example/docs/generated -p /bars -s cmd/example/docs/src/bars.md
       - run: go test -v -coverprofile=profile.cov ./...
       - name: send coverage
         uses: shogo82148/actions-goveralls@v1
