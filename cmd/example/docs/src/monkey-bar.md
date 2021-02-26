@@ -1,15 +1,25 @@
 # Monkey Bar {#monkey}
 
-## Code Examples {#code_examples}
+## Lists {#list}
 
-### go
+### Ordered list {#orderlist}
 
-```go
-var i = 0
-```
+1. First list item
+2. Second list item
+   1. Indented list item
+      1. Indented list item
+      2. Indented list item
+   2. Indented list item
+3. Third list item
+4. Fourth list item
 
-### js
+### Unordered list {#unorderedlist}
 
-```javascript
-let i = 0;
-```
+- First list item
+- Second list item
+  - Indented list item
+    - Indented list item
+    - Indented list item
+  - Indented list item
+- Third list item
+- Fourth list item

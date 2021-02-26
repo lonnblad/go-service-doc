@@ -2,7 +2,6 @@ package gen
 
 import (
 	"bytes"
-	"regexp"
 	"text/template"
 
 	"github.com/pkg/errors"
@@ -77,8 +76,9 @@ func (g *Gen) Build() (_ []byte, err error) {
 		return
 	}
 
-	wsRegex := regexp.MustCompile(`>\s*\n\s*<`)
-	html := wsRegex.ReplaceAll(buffer.Bytes(), []byte("><"))
+	// wsRegex := regexp.MustCompile(`(</\w+)>\s*\n\s*<`)
+	// html := wsRegex.ReplaceAll(buffer.Bytes(), []byte("$1><"))
+	html := buffer.Bytes()
 
 	return html, nil
 }
@@ -104,28 +104,20 @@ const htmlPageTemplate = `<!DOCTYPE html>
 </head>
 <body class="markdown-body">
   <div class="flex-container">
-	<div class="menu-container">
-	  <div  class=menu-header>
-	    <h1>{{.API}}</h1>
-		<form class=menu-search action="{{.Basepath}}{{.SearchLink}}" method="get">
-		  <input type="text" placeholder="Search.." name="q" value="{{.QueryString}}" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" autofocus />
-		  <button type="submit">Search</button>
-	    </form>
-	  </div>
-      <ul>
-      {{range .Pages}}
-        {{range .Headers}}
-        <li><a href="{{.Link}}">{{.Title}}</a>
-        {{if not .Headers}}</li>{{else}}<ul>{{end}}
-            {{range .Headers}}
-            <li><a href="{{.Link}}">{{.Title}}</a></li>
-            {{end}}
-        {{if .Headers}}
+    <div class="menu-container">
+      <div  class=menu-header>
+        <h1>{{.API}}</h1>
+        <form class=menu-search action="{{.Basepath}}{{.SearchLink}}" method="get">
+          <input type="text" placeholder="Search.." name="q" value="{{.QueryString}}" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" autofocus />
+          <button type="submit">Search</button>
+        </form>
+      </div>
+      <ul>{{range .Pages}}{{range .Headers}}
+        <li><a href="{{.Link}}">{{.Title}}</a>{{if not .Headers}}</li>{{else}}
+          <ul>{{end}}{{range .Headers}}
+            <li><a href="{{.Link}}">{{.Title}}</a></li>{{end}}{{if .Headers}}
           </ul>
-        </li>  
-        {{end}}
-        {{end}}
-      {{end}}
+        </li>{{end}}{{end}}{{end}}
       </ul>
     </div>
     <div class="doc-container">

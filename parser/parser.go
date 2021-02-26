@@ -7,6 +7,7 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/Depado/bfchroma"
 	"github.com/pkg/errors"
 	"github.com/russross/blackfriday/v2"
 	"go.uber.org/zap"
@@ -171,7 +172,11 @@ func (p *Parser) parseMarkdown() {
 			blackfriday.HardLineBreak |
 			blackfriday.Tables
 
-		markdown := blackfriday.Run(content, blackfriday.WithExtensions(exts))
+		markdown := blackfriday.Run(
+			content,
+			blackfriday.WithRenderer(bfchroma.NewRenderer()),
+			blackfriday.WithExtensions(exts),
+		)
 		page.Markdown = string(markdown)
 
 		// Build Menu from Markdown

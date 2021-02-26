@@ -227,7 +227,7 @@ func createSearchIndex() (searchIndex bleve.Index, err error) {
 }
 
 func createSearchPage(queryString string, searchResult []document) []byte {
-	var result = "<div><h1>Search Result for (" + queryString + ")</h1>"
+	var result = "<div><h1>Search result for: \"" + queryString + "\"</h1>"
 
 	for _, doc := range searchResult {
 		title := strings.Join(doc.Context, " > ")
