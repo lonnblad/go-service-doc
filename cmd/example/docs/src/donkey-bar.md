@@ -5,12 +5,6 @@
 ### go
 
 ```go
-import "fmt"
-
-func main() {
-     fmt.Println("hej")
-}
-
 var obj = map[string]interface{}{
   i: 0,
   s: "",
