@@ -1,8 +1,8 @@
 # Monkey Bar {#monkey}
 
-## Lists {#list}
+## Lists {#lists}
 
-### Ordered list {#orderlist}
+### Ordered list
 
 1. First list item
 2. Second list item
@@ -13,7 +13,7 @@
 3. Third list item
 4. Fourth list item
 
-### Unordered list {#unorderedlist}
+### Unordered list
 
 - First list item
 - Second list item
