@@ -76,11 +76,7 @@ func (g *Gen) Build() (_ []byte, err error) {
 		return
 	}
 
-	// wsRegex := regexp.MustCompile(`(</\w+)>\s*\n\s*<`)
-	// html := wsRegex.ReplaceAll(buffer.Bytes(), []byte("$1><"))
-	html := buffer.Bytes()
-
-	return html, nil
+	return buffer.Bytes(), nil
 }
 
 func (g *Gen) BuildSearchPageTemplate() (_ []byte, err error) {
