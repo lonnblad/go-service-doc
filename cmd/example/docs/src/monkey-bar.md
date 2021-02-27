@@ -17,9 +17,9 @@
 
 - First list item
 - Second list item
-  - Indented list item
-    - Indented list item
-    - Indented list item
-  - Indented list item
+   - Indented list item
+      - Indented list item
+      - Indented list item
+   - Indented list item
 - Third list item
 - Fourth list item

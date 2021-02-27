@@ -52,7 +52,7 @@
 }
 
 .menu-content {
-  overflow: scroll;
+  overflow: auto;
 }
 
 .menu-content ul {
