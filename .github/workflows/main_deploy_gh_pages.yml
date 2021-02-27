@@ -13,7 +13,7 @@ jobs:
       - name: Compile Static Web Pages
         run: |
           go run main.go -d cmd/example/docs/src -o docs -p /go-service-doc -s bars.md
-          mv docs/bar.html docs/index.html
+          mv docs/bars.html docs/index.html
 
       - name: Deploy
         uses: s0/git-publish-subdir-action@develop
