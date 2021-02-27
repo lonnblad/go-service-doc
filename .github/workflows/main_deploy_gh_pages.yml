@@ -11,7 +11,7 @@ jobs:
           go-version: "1.16"
       - uses: actions/checkout@v2
       - name: Compile Static Web Pages
-      - run: |
+        run: |
           go run main.go -d cmd/example/docs/src -o docs -p /go-service-doc -s bars.md
           mv docs/bar.html docs/index.html
 
