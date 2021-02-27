@@ -1,5 +1,16 @@
-name: pr_validation
-on: [pull_request]
+name: validation
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
+  push:
+    branches:
+      - main
+  release:
+    types:
+      - created
 
 jobs:
   golangci:
@@ -11,14 +22,14 @@ jobs:
         uses: golangci/golangci-lint-action@v2
         with:
           # Required: the version of golangci-lint is required and must be specified without patch version: we always use the latest patch version.
-          version: v1.31
+          version: v1.37
 
   test:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        go: ["1.13", "1.14", "1.15"]
+        go: ["1.13", "1.14", "1.15", "1.16"]
 
     steps:
       - uses: actions/setup-go@v2
