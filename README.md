@@ -47,7 +47,7 @@ You can find this example with the markdown source files and the generated outpu
 
 To generate the output, the following is executed from [cmd/example](cmd/example).
 
-> go-service-doc -s bars.md -d docs/src -o docs/generated -p /bars
+> go-service-doc -s bars.md -d docs/src -o docs/generated -p /go-service-doc
 
 Example code:
 
@@ -58,21 +58,16 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/gorilla/mux"
-
 	service_docs "github.com/lonnblad/go-service-doc/cmd/example/docs/generated"
 )
 
 const port = "8080"
 
 func main() {
-	mux := mux.NewRouter()
-
-	mux.PathPrefix("/bars").Handler(service_docs.Handler())
-
-	server := &http.Server{Addr: ":" + port, Handler: mux}
+	server := &http.Server{Addr: ":" + port, Handler: service_docs.Handler()}
 
 	log.Printf("Will start to listen and serve on port %s", port)
+
 	if err := server.ListenAndServe(); err != http.ErrServerClosed {
 		log.Fatal("HTTP server ListenAndServe")
 	}
