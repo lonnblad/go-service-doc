@@ -13,6 +13,8 @@ Apart from standard Markdown syntax support, it features support for embedding s
 
 It currently has support for generating standard HTML files and a `go` handler.
 
+Here you can find a [deployed example](https://lonnblad.github.io/go-service-doc).
+
 ## Usage
 
 ### Install
