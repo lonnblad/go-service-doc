@@ -12,50 +12,38 @@ const markdownCSS = `@font-face {
   height: 100vh;
 }
 
-.markdown-body .menu-container {
+.menu-container {
   padding: 1em 1.5em;
   min-width: 20em;
   width: 20vw;
-  overflow: scroll;
   background-color: #f5f5f5;
   border: #e8e8e8 solid;
   border-width: 0 1px 0 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.markdown-body .menu-container ul {
-  margin-top: 0.25em;
-  padding-left: 1em;
-  list-style: none;
+.menu-header {
+  padding-bottom: 0.3em;
 }
 
-.markdown-body .menu-container ul li::before {
-  content: "\2022";
-  color: #444;
-  font-weight: bold;
-  display: inline-block;
-  width: 1em;
-  margin-left: -0.5em;
-}
-
-.markdown-body .menu-container .menu-header {
+.menu-search {
+  display: flex;
+  border-bottom: 1px solid #eaecef;
   padding-bottom: 16px;
 }
 
-.markdown-body .menu-container .menu-header .menu-search {
-  display: flex;
-}
-
-.markdown-body .menu-container .menu-header .menu-search input[type=text] {
+.menu-search input[type=text] {
   padding: 5px 10px;
   font-size: 14px;
   width: 100%;
 }
 
-.markdown-body .menu-container .menu-header .menu-search input[type=text]:focus{
+.menu-search input[type=text]:focus{
   outline: none;
 }
 
-.markdown-body .menu-container .menu-header .menu-search button {
+.menu-search button {
   padding: 8px 10px;
   background: #ddd;
   font-size: 14px;
@@ -63,8 +51,27 @@ const markdownCSS = `@font-face {
   cursor: pointer;
 }
 
-.markdown-body .menu-container .menu-header .menu-search button:hover {
+.menu-search button:hover {
   background: #ccc;
+}
+
+.menu-content {
+  overflow: auto;
+}
+
+.menu-content ul {
+  margin-top: 0.25em;
+  padding-left: 1em;
+  list-style: none;
+}
+
+.menu-content ul li::before {
+  content: "\2022";
+  color: #444;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -0.5em;
 }
 
 .markdown-body .doc-container {
