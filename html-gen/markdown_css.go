@@ -56,7 +56,7 @@ const markdownCSS = `@font-face {
 }
 
 .menu-content {
-  overflow: scroll;
+  overflow: auto;
 }
 
 .menu-content ul {
