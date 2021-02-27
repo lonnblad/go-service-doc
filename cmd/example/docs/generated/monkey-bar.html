@@ -8,26 +8,28 @@
 <body class="markdown-body">
   <div class="flex-container">
     <div class="menu-container">
-      <div  class=menu-header>
+      <div class=menu-header>
         <h1>Bars</h1>
         <form class=menu-search action="/bars/search" method="get">
           <input type="text" placeholder="Search.." name="q" value="" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" autofocus />
           <button type="submit">Search</button>
         </form>
       </div>
-      <ul>
-        <li><a href="/bars#bars">Bars</a></li>
-        <li><a href="/bars/donkey-bar#donkey">Donkey Bar</a>
-          <ul>
-            <li><a href="/bars/donkey-bar#code_examples">Code Examples</a></li>
-          </ul>
-        </li>
-        <li><a href="/bars/monkey-bar#monkey">Monkey Bar</a>
-          <ul>
-            <li><a href="/bars/monkey-bar#lists">Lists</a></li>
-          </ul>
-        </li>
-      </ul>
+      <div class=menu-content>
+        <ul>
+          <li><a href="/bars#bars">Bars</a></li>
+          <li><a href="/bars/donkey-bar#donkey">Donkey Bar</a>
+            <ul>
+              <li><a href="/bars/donkey-bar#code_examples">Code Examples</a></li>
+            </ul>
+          </li>
+          <li><a href="/bars/monkey-bar#monkey">Monkey Bar</a>
+            <ul>
+              <li><a href="/bars/monkey-bar#lists">Lists</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="doc-container">
       <h1 id="monkey">Monkey Bar</h1>
