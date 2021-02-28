@@ -105,7 +105,7 @@ const htmlPageTemplate = `<!DOCTYPE html>
   <title>{{.API}}</title>
   <meta name='generator' content='github.com/lonnblad/go-service-doc'>
   <link rel="stylesheet" href="{{.Basepath}}/markdown.css">
-	{{if .FaviconHref}}<link rel="icon" href="{{.FaviconHref}}">{{end}}
+  {{if .FaviconHref}}<link rel="icon" href="{{.FaviconHref}}">{{end}}
 </head>
 <body class="markdown-body">
   <div class="flex-container">
