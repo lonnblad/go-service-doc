@@ -63,5 +63,5 @@ type File struct {
 	Href        string
 	Path        string
 	ContentType string
-	Content     string
+	Content     []byte
 }

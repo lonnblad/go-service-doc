@@ -16,6 +16,7 @@ type Gen struct {
 	searchLink  string
 	queryString string
 	basepath    string
+	faviconHref string
 }
 
 func New() *Gen {
@@ -47,6 +48,11 @@ func (g *Gen) WithBasepath(basepath string) *Gen {
 	return g
 }
 
+func (g *Gen) WithFavicon(href string) *Gen {
+	g.faviconHref = href
+	return g
+}
+
 func (g *Gen) Build() (_ []byte, err error) {
 	templateInfo := struct {
 		API         string
@@ -55,6 +61,7 @@ func (g *Gen) Build() (_ []byte, err error) {
 		SearchLink  string
 		QueryString string
 		Basepath    string
+		FaviconHref string
 	}{
 		API:         g.api,
 		Pages:       g.pages,
@@ -62,6 +69,7 @@ func (g *Gen) Build() (_ []byte, err error) {
 		SearchLink:  g.searchLink,
 		QueryString: g.queryString,
 		Basepath:    g.basepath,
+		FaviconHref: g.faviconHref,
 	}
 
 	generator, err := template.New("html_page").Parse(htmlPageTemplate)
@@ -97,6 +105,7 @@ const htmlPageTemplate = `<!DOCTYPE html>
   <title>{{.API}}</title>
   <meta name='generator' content='github.com/lonnblad/go-service-doc'>
   <link rel="stylesheet" href="{{.Basepath}}/markdown.css">
+	{{if .FaviconHref}}<link rel="icon" href="{{.FaviconHref}}">{{end}}
 </head>
 <body class="markdown-body">
   <div class="flex-container">
