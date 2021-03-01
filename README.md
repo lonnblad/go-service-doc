@@ -90,6 +90,10 @@ func main() {
 
   The Side Menu features a Search field that can be used to search in all generated pages. The search engine will index content based on Markdown Headers.
 
-- Embedding SVG files
+- Embedding Images
 
-  All SVG files found in `<src_dir>/static` will be embedded in the generated go-handler and can be referenced through `<base_path>/static/<file_name>`.
+  All SVG, PNG and ICO files found in `<src_dir>/static` will be embedded in the generated go-handler and can be referenced through `<base_path>/static/<file_name>`.
+
+- Favicon
+
+  If a file called `favicon.ico` is found in `<src_dir>/static`, it will be used as the sites favicon.

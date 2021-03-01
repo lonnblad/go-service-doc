@@ -107,7 +107,7 @@ func exportStaticFiles(staticFiles core.Files, sourceDir, outputDir string) erro
 
 		zap.L().With(zap.String("file", file.Name)).Info("exporting static file")
 
-		if err := ioutil.WriteFile(filepath, []byte(file.Content), utils.FilePermission); err != nil {
+		if err := ioutil.WriteFile(filepath, file.Content, utils.FilePermission); err != nil {
 			return errors.Wrap(err, "ioutil.WriteFile failed")
 		}
 	}

@@ -145,10 +145,8 @@ func {{.Name}}PageHandler(w http.ResponseWriter, req *http.Request) {
 func {{.Name}}StaticFileHandler(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set(contentType, "{{.ContentType}}")
 
-	const content = ` + "`{{.Content}}`" + `
-
 	// nolint: errcheck
-	w.Write([]byte(content))
+	w.Write([]byte{ {{range .Content}}{{ . }}, {{end}} })
 }
 {{end}}
 func searchHandler(searchIndex bleve.Index) func(http.ResponseWriter, *http.Request) {

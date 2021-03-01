@@ -3,7 +3,6 @@ package parser
 import (
 	"fmt"
 	"io/ioutil"
-	"os"
 	"regexp"
 	"strings"
 
@@ -28,6 +27,7 @@ type Parser struct {
 	pages           core.Pages
 	staticFiles     core.Files
 	searchPage      string
+	faviconHref     string
 	err             error
 }
 
@@ -78,10 +78,10 @@ func (p *Parser) SearchPage() string {
 
 func (p *Parser) Run() {
 	p.findMDFiles()
+	p.findStaticFiles()
 	p.parseMarkdown()
 	p.enrichIndexDocumentsWithHTML()
 	p.buildHTMLPages()
-	p.findSVGFiles()
 	p.buildSearchPage()
 }
 
@@ -112,44 +112,6 @@ func (p *Parser) findMDFiles() {
 
 		page.Filepath = p.sourceDir + "/" + f.Name()
 		p.pages = append(p.pages, page)
-	}
-}
-
-func (p *Parser) findSVGFiles() {
-	zap.L().Info("search for SVG files")
-
-	files, err := ioutil.ReadDir(p.sourceDir + "/static")
-	if os.IsNotExist(err) {
-		return
-	}
-
-	if err != nil {
-		p.err = errors.Wrap(err, "ioutil.ReadDir failed")
-		return
-	}
-
-	for _, f := range files {
-		if f.IsDir() || !strings.HasSuffix(f.Name(), ".svg") {
-			continue
-		}
-
-		file := core.File{ContentType: "image/svg+xml"}
-		file.Path = p.outputDir + "/static/" + f.Name()
-		file.Href = p.basepath + "/static/" + utils.ConvertToKebabCase(f.Name())
-
-		file.Name = strings.ReplaceAll(f.Name(), ".svg", "")
-		file.Name = utils.ConvertToCamelCase(file.Name)
-
-		filepath := p.sourceDir + "/static/" + f.Name()
-
-		content, err := ioutil.ReadFile(filepath)
-		if err != nil {
-			p.err = errors.Wrap(err, "ioutil.ReadFile failed")
-			return
-		}
-
-		file.Content = string(content)
-		p.staticFiles = append(p.staticFiles, file)
 	}
 }
 
@@ -350,6 +312,7 @@ func (p *Parser) buildHTMLPages() {
 			WithDocument(page.Markdown).
 			WithSearchLink("/search").
 			WithBasepath(p.basepath).
+			WithFavicon(p.faviconHref).
 			Build()
 		if err != nil {
 			p.err = errors.Wrap(err, "html_gen.Build failed")
