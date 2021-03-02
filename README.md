@@ -19,7 +19,7 @@ Here you can find a [deployed example](https://lonnblad.github.io/go-service-doc
 
 ### Install
 
-> go get -u github.com/lonnblad/go-service-doc
+> go get -u github.com/lonnblad/go-service-doc@v0.3.0
 
 ### Run
 
@@ -29,15 +29,15 @@ Here you can find a [deployed example](https://lonnblad.github.io/go-service-doc
 
 - **-s**
 
-  > The filename of the Markdown file to use for the base path, defaults to `service.md`.
+  > The Index Markdown filename to use for the base path, defaults to `service.md`.
 
 - **-d**
 
-  > The Directory where the markdown files are located, defaults to `docs`.
+  > The Source Directory where the markdown files are located, defaults to `docs`.
 
 - **-o**
 
-  > The Directory where to write the generated files, defaults to `docs`.
+  > The Output Directory where to write the generated files, defaults to `docs`.
 
 - **-p**
 
@@ -78,22 +78,46 @@ func main() {
 
 ## Features
 
-- HTML Page Generator
+### HTML Page Generator
 
-  It will convert the Markdown files to HTML pages and add CSS similar to the CSS used by github to display Markdown files. The URL for the generated HTML page will be the kebab-case version of the filename excluding the extension, i.e. `monkey_bar.md` will be `/<base_path>/monkey-bar`.
+It will convert the Markdown files to HTML pages and add CSS similar to the CSS used by github to display Markdown files. The URL for the generated HTML page will be the kebab-case version of the filename excluding the extension, i.e. `monkey_bar.md` will be `/<base_path>/monkey-bar`.
 
-- Side Menu Generator
+### Side Menu Generator
 
-  The Side Menu is generated based on the Markdown Header Elements: `#` and `##`. It will only generate entries for the headers that have a defined Header ID, like: `{#header_id}`.
+The Side Menu is generated based on the Markdown Header Elements: `#` and `##`. It will only generate entries for the headers that have a defined Header ID, like: `{#header_id}`.
 
-- Search Engine
+### Search Engine
 
-  The Side Menu features a Search field that can be used to search in all generated pages. The search engine will index content based on Markdown Headers.
+The Side Menu features a Search field that can be used to search in all generated pages. The search engine will index content based on Markdown Headers.
 
-- Embedding Images
+### Embedding Images
 
-  All SVG, PNG and ICO files found in `<src_dir>/static` will be embedded in the generated go-handler and can be referenced through `<base_path>/static/<file_name>`.
+Files found in the `static` folder will be embedded in the generated go-handler and can be referenced through `<base_path>/static/<file_name>`.
 
-- Favicon
+```
+<src_directory>
+└─ static
+   ├─ bars.svg
+   ├─ favicon-16x16.png
+   └─ favicon.ico
+```
 
-  If a file called `favicon.ico` is found in `<src_dir>/static`, it will be used as the sites favicon.
+#### How to add an image in Markdown
+
+From [cmd/example](cmd/example/docs/src/bars.md), `![The bars](/go-service-doc/static/bars.svg)`.
+
+#### Supported file extensions:
+
+- .svg
+- .png
+- .ico
+
+### Favicon
+
+If a file called `favicon.ico` is found in the `static` folder, it will be used as the sites favicon.
+
+```
+<src_directory>
+└─ static
+   └─ favicon.ico
+```
