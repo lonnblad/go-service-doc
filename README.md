@@ -102,15 +102,15 @@ Files found in the `static` folder will be embedded in the generated go-handler 
    └─ favicon.ico
 ```
 
-#### How to add an image in Markdown
-
-From [cmd/example](cmd/example/docs/src/bars.md), `![The bars](/go-service-doc/static/bars.svg)`.
-
 #### Supported file extensions:
 
 - .svg
 - .png
 - .ico
+
+#### How to add an image in Markdown
+
+From [cmd/example](cmd/example/docs/src/bars.md), `![The bars](/go-service-doc/static/bars.svg)`.
 
 ### Favicon
 
