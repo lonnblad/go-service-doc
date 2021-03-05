@@ -5,15 +5,19 @@
 
 # go-service-doc
 
-This a tool to generate basic Service Documentation web pages based on standard Markdown files.
+This is a tool to generate a static web site based on Markdown files.
 
-It will convert the Markdown files to HTML pages, generate a menu based on `#` and `##` elements and add CSS similar to the CSS used by github to display Markdown files. HTML pages will have the kebab-case version of the filename as the URL.
+It will:
+- convert Markdown files to HTML pages ([more info](#html-page-generator))
+- generate a menu based on `#` and `##` headers ([more info](#side-menu-generator))
+- add styling similar to what is used by github to display Markdown files
 
-Apart from standard Markdown syntax support, it features support for embedding svg files.
+go-service-doc also supports embedding static files, [more info](#embedding-images).
 
-It currently has support for generating standard HTML files and a `go` handler.
+You can find a list of all features [here](#features)
 
-Here you can find a [deployed example](https://lonnblad.github.io/go-service-doc).
+go-service-doc will generate both HTML files to be deployed standalone and a `go` handler, which could be used in your service.
+Here you can find a [deployed example](https://lonnblad.github.io/go-service-doc) of the generated HTML files.
 
 ## Usage
 
