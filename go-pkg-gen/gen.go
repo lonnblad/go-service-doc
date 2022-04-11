@@ -104,6 +104,7 @@ const mimeHTML = "text/html"
 const mimeCSS = "text/css"
 
 func Handler() http.Handler {
+	// nolint: errcheck
 	index, _ := createSearchIndex()
 
 	mux := http.NewServeMux()
@@ -181,6 +182,7 @@ func searchHandler(searchIndex bleve.Index) func(http.ResponseWriter, *http.Requ
 		searchResult, _ := searchIndex.Search(searchRequest)
 
 		var result = make([]document, len(searchResult.Hits))
+
 		for idx, hit := range searchResult.Hits {
 			cs, ok := hit.Fields["Context"].([]interface{})
 			if ok {
@@ -205,15 +207,20 @@ func searchHandler(searchIndex bleve.Index) func(http.ResponseWriter, *http.Requ
 func createSearchIndex() (searchIndex bleve.Index, err error) {
 	indexMapping := bleve.NewIndexMapping()
 	if searchIndex, err = bleve.NewMemOnly(indexMapping); err != nil {
- 		return
+		return
 	}
 
+	// nolint: gosimple
 	var doc document
 {{- range .IndexDocuments}}
 	doc = document{
-		Link:    "{{.Link}}",
-		Context: []string{ {{- range $index, $element := .Context}} ` + "`{{$element}}`" + `, {{- end}} },
-		Content: []string{ {{- range $index, $element := .Content}} ` + "`{{$element}}`" + `, {{- end}} },
+		Link: "{{.Link}}",
+		Context: []string{ {{- range $index, $element := .Context}}
+			` + "`{{$element}}`" + `, {{- end}}
+		},
+		Content: []string{ {{- range $index, $element := .Content}}
+			` + "`{{$element}}`" + `, {{- end}}
+		},
 		HTML: ` + "`{{.HTML}}`" + `,
 	}
 
@@ -221,7 +228,7 @@ func createSearchIndex() (searchIndex bleve.Index, err error) {
 		return
 	}
 {{end}}
-	return
+	return searchIndex, nil
 }
 
 func createSearchPage(queryString string, searchResult []document) []byte {
